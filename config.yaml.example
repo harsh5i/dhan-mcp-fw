@@ -1,0 +1,38 @@
+# ============================================================
+# dhan-nifty-mcp configuration
+# ============================================================
+
+dhan:
+  client_id: "YOUR_DHAN_CLIENT_ID"
+  access_token: "YOUR_DHAN_ACCESS_TOKEN"
+  api_base: "https://api.dhan.co/v2"
+
+safety:
+  # "dry-run" = logs what would happen, never hits Dhan
+  # "live"    = real orders
+  mode: "dry-run"
+
+  # per-order limits (user-configurable)
+  max_lots_per_order: 2
+  max_open_positions: 5
+  max_order_value: 50000        # INR cap per single order
+
+  # only these underlyings are allowed
+  allowed_instruments:
+    - "NIFTY"
+    - "BANKNIFTY"
+
+  # trading window (IST, 24h format)
+  market_hours:
+    start: "09:15"
+    end: "15:30"
+
+  # price sanity: reject if limit price deviates > this % from LTP
+  price_deviation_pct: 20
+
+  # kill switch passphrase (must match exactly to trigger exit_all)
+  kill_phrase: "CONFIRM_EXIT_ALL"
+
+logging:
+  dir: "~/.dhan-mcp/logs"
+  audit_file: "trades.jsonl"

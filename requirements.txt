@@ -1,0 +1,5 @@
+dhanhq>=2.0.0
+mcp>=1.0.0
+pyyaml>=6.0
+pandas>=2.0.0
+ta>=0.11.0
