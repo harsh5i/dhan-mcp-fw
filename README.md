@@ -2,7 +2,7 @@
 
 > **Disclaimer:** This is an experimental project built for personal use and learning. It is **not** financial advice, investment guidance, or a trading recommendation of any kind. Any real trades or trading decisions made using this tool are entirely at your own risk. The authors accept no responsibility for financial losses incurred through the use of this software. This project is **not affiliated with, endorsed by, or associated with Dhan, DhanHQ, or any other financial institution or organisation.** Always do your own research and consult a qualified financial advisor before trading. Feedback and contributions are welcome!
 
-An MCP (Model Context Protocol) server for NSE stock analysis and NIFTY/BANKNIFTY options trading via [Dhan](https://dhan.co) broker. Built from scratch. Any MCP-compatible AI client — Claude Code, OpenClaw, Codex CLI, Gemini CLI, Cursor, VS Code Copilot — can connect and trade.
+An MCP (Model Context Protocol) server for NSE stock analysis and NIFTY/BANKNIFTY options trading via [Dhan](https://dhan.co) broker, with a built-in **strategy framework** for creating, backtesting, and running automated trading strategies. Built from scratch. Any MCP-compatible AI client — Claude Code, OpenClaw, Codex CLI, Gemini CLI, Cursor, VS Code Copilot — can connect, analyse, and trade.
 
 > **39 tools** covering stock analysis, market data, historical charts, technical indicators, portfolio, order management, options execution, and a full strategy framework — all safety-gated.
 
