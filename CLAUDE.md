@@ -1,6 +1,6 @@
-# dhan-nifty-mcp
+# dhan-mcp-fw
 
-MCP server for Nifty/BankNifty options trading via Dhan.
+MCP server for NSE stock analysis and NIFTY/BANKNIFTY options trading via Dhan.
 39 tools: 27 trading + 12 strategy framework.
 Full documentation: see README.md in this directory.
 
