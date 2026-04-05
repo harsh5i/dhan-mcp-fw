@@ -155,35 +155,45 @@ def dhanwin() -> dict:
     Present the returned menu to the user and wait for their choice.
 
     Returns:
-        The DhanWin menu with 5 options and instructions for each.
+        The DhanWin menu with 7 options and instructions for each.
     """
     return {
         "greeting": "Welcome back. Here's your menu:",
         "menu": {
             "1": {
                 "label": "Learn",
-                "description": "How to use DhanMCP and Trading Framework",
+                "description": "How to use DhanMCP and the Trading framework",
                 "action": "Explain the 38 tools: 27 trading (market data, historical, portfolio, orders, execution) + 11 strategy framework (create/run/monitor/backtest strategies). Strategies use YAML, 16 indicators, deterministic execution.",
             },
             "2": {
                 "label": "Reconcile",
-                "description": "Check logs, bring current status if things were disrupted",
+                "description": "Check logs and bring current status",
                 "action": "Call server_status, get_strategy_status, list_saved_strategies, get_positions, get_pnl_summary. Report health, running strategies, open positions, any issues.",
             },
             "3": {
-                "label": "Monitor",
-                "description": "Dashboard: strategies, positions, performance, analytics, custom queries",
-                "action": "Call get_strategy_status, get_positions, get_pnl_summary, list_saved_strategies. For each strategy, offer get_trade_log, get_strategy_profile, get_strategy_commentary. Support custom analytical queries.",
+                "label": "Dashboard",
+                "description": "All active strategies, positions, P&L, performance",
+                "action": "Call get_strategy_status (no strategy_id for all), get_positions, get_pnl_summary, list_saved_strategies. Show combined view: running strategies with status, current/recent positions and trades, performance stats. Use get_trade_log, get_strategy_profile, get_order_book.",
             },
             "4": {
-                "label": "New strategy",
-                "description": "Define and create a new trading strategy",
-                "action": "Call get_strategy_template to show the schema. Discuss with user what they want to trade, which indicators, entry/exit conditions, risk limits. Then call create_strategy with the YAML.",
+                "label": "Strategies",
+                "description": "Browse, inspect, manage saved strategies",
+                "action": "Call list_saved_strategies to show all strategies in the pool. Offer get_strategy_details to inspect config, get_strategy_profile for version history and performance, get_strategy_commentary for AI-generated analysis via Ollama.",
             },
             "5": {
+                "label": "Deploy",
+                "description": "Start a strategy (paper or live)",
+                "action": "Show available strategies from pool (list_saved_strategies). User picks one, then chooses mode: paper or live. Call start_strategy(strategy_id, mode) to deploy. Multiple strategies can run simultaneously. Strategies auto-restore on server restart.",
+            },
+            "6": {
+                "label": "New strategy",
+                "description": "Define and create a new one",
+                "action": "Call get_strategy_template to show the schema. Discuss with user what they want to trade, which indicators, entry/exit conditions, risk limits. Then call create_strategy with the YAML.",
+            },
+            "7": {
                 "label": "Backtest",
-                "description": "Test a strategy on historical data",
-                "action": "Ask which strategy (list_saved_strategies) and date range. Call backtest_strategy. Present the results: trade count, win rate, P&L, drawdown.",
+                "description": "Signal validation on spot data (options P&L needs paper trade)",
+                "action": "Ask which strategy (list_saved_strategies) and date range. Call backtest_strategy. Present the results: trade count, win rate, P&L, drawdown. Note: for options strategies, P&L is approximate (spot-based) — use paper trading for accurate options P&L.",
             },
         },
         "instructions": "Present this menu to the user. When they pick a number, follow the corresponding action. When they say 'menu', show this again.",
